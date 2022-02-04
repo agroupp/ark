@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "packages/ark",
+  "sourceRoot": "packages/ark/src",
+  "prefix": "ark",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/packages/ark"],
+      "options": {
+        "project": "packages/ark/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/ark/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/ark/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/ark"],
+      "options": {
+        "jestConfig": "packages/ark/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/ark/src/**/*.ts",
+          "packages/ark/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:package"]
+}

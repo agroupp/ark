@@ -5,18 +5,13 @@
     "defaultBase": "master"
   },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/angular"
   },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "MDUwOWY5NmUtMGViNC00Yjc2LWEzYmUtOGM0YWVkOTIzZWMxfHJlYWQtd3JpdGU="
       }
     }
@@ -44,5 +39,6 @@
     "@nrwl/angular:storybook-configuration": {
       "linter": "eslint"
     }
-  }
+  },
+  "defaultProject": "ark"
 }
