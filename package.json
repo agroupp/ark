@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "nx": "nx",
+    "ng": "nx",
+    "start": "nx serve --project=dev-app",
     "commit": "git-cz",
     "postinstall": "ngcc --properties es2015 browser module main"
   },
@@ -19,6 +22,7 @@
     "@commitlint/config-angular": "^16.0.0",
     "@nrwl/angular": "^13.7.2",
     "@nrwl/cli": "13.7.2",
+    "@nrwl/cypress": "13.7.2",
     "@nrwl/eslint-plugin-nx": "13.7.2",
     "@nrwl/jest": "13.7.2",
     "@nrwl/linter": "13.7.2",
@@ -29,8 +33,10 @@
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "~5.10.0",
     "@typescript-eslint/parser": "~5.10.0",
+    "cypress": "^9.1.0",
     "eslint": "~8.7.0",
     "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^4.0.0",
     "git-cz": "^4.8.0",
@@ -45,7 +51,8 @@
     "prettier": "^2.5.1",
     "standard-version": "^9.3.2",
     "ts-jest": "27.0.5",
-    "typescript": "~4.5.2"
+    "typescript": "~4.5.2",
+    "webpack": "^5.68.0"
   },
   "config": {
     "commitizen": {

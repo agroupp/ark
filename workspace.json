@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
-    "ark": "packages/ark"
+    "ark": "packages/ark",
+    "dev-app": "packages/dev-app",
+    "dev-app-e2e": "packages/dev-app-e2e"
   }
 }
