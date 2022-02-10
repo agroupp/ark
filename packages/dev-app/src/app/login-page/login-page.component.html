@@ -1,0 +1,26 @@
+<div class="wrapper" *ngIf="vm$ | async as vm">
+  <h1>Login</h1>
+  <form action="." [formGroup]="form" (ngSubmit)="login()">
+    <div class="row">
+      <input
+        type="email"
+        placeholder="Email"
+        name="email"
+        formControlName="email"
+      />
+    </div>
+    <div class="row">
+      <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        formControlName="password"
+      />
+    </div>
+    <div class="row">
+      <button type="submit" [disabled]="vm.loading">Login</button>
+    </div>
+    <div class="row" *ngIf="vm.loading">Loading...</div>
+    <div class="row" *ngIf="vm.error">{{ vm.error }}</div>
+  </form>
+</div>

@@ -1,1 +1,16 @@
-<router-outlet></router-outlet>
+<div
+  class="main-layout"
+  *ngIf="session.loggedin$ | async as loggedin; else notLoggedin"
+>
+  <header class="main-header">
+    <div class="brand">Ark</div>
+    <div class="spacer"></div>
+    <div class="controls">
+      <span class="user-name">{{ loggedin.userEmail }}</span>
+    </div>
+  </header>
+  <router-outlet></router-outlet>
+</div>
+<ng-template class="main-layout" #notLoggedin>
+  <router-outlet></router-outlet>
+</ng-template>

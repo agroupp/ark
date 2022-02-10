@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@groupp/ark": ["packages/ark/src/index.ts"]
+      "@groupp/ark": ["packages/ark/src/index.ts"],
+      "ark": ["dist/packages/ark"]
     }
   },
   "exclude": ["node_modules", "tmp"]
