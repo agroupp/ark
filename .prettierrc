@@ -1,3 +1,11 @@
 {
-  "singleQuote": true
+  "singleQuote": true,
+  "trailingComma": "all",
+  "arrowParens": "avoid",
+  "printWidth": 120,
+  "tabWidth": 2,
+  "eslintIntegration": true,
+  "bracketSpacing": true,
+  "arrow-body-style": "off",
+  "prefer-arrow-callback": "off"
 }

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 
+import { SessionFacade } from './session/session.facade';
+
 @Component({
   selector: 'ark-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'dev-app';
+  constructor(readonly session: SessionFacade) {}
 }
