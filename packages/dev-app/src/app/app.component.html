@@ -1,7 +1,4 @@
-<div
-  class="main-layout"
-  *ngIf="session.loggedin$ | async as loggedin; else notLoggedin"
->
+<div class="main-layout" *ngIf="session.loggedin$ | async as loggedin; else notLoggedin">
   <header class="main-header">
     <div class="brand">Ark</div>
     <div class="spacer"></div>

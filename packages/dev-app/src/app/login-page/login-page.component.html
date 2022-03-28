@@ -2,20 +2,10 @@
   <h1>Login</h1>
   <form action="." [formGroup]="form" (ngSubmit)="login()">
     <div class="row">
-      <input
-        type="email"
-        placeholder="Email"
-        name="email"
-        formControlName="email"
-      />
+      <input type="email" placeholder="Email" name="email" formControlName="email" />
     </div>
     <div class="row">
-      <input
-        type="password"
-        placeholder="Password"
-        name="password"
-        formControlName="password"
-      />
+      <input type="password" placeholder="Password" name="password" formControlName="password" />
     </div>
     <div class="row">
       <button type="submit" [disabled]="vm.loading">Login</button>
