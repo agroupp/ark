@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { ArkModule } from '@groupp/ark';
 
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './auth.guard';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -15,7 +17,12 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, LoginPageComponent, MainPageComponent],
-  imports: [BrowserModule, ReactiveFormsModule, RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' })],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    ArkModule.configure({ isDebugMode: !environment.production }),
+    RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

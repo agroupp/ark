@@ -4,13 +4,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   selector: 'ark-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainPageComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -1,7 +1,8 @@
 import { Inject, Injectable, OnDestroy, Optional } from '@angular/core';
 import { distinctUntilChanged, map, Observable, ReplaySubject, Subject } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
 
-import { ArkConfig, StateBase, INITIAL_STATE, ARK_CONFIG } from '../entities';
+import { ArkConfig, StateBase, INITIAL_STATE, ARK_CONFIG, WindowRegistry } from '../entities';
 
 export type UpdateStateFunction<State, UpdatedState extends Partial<State> = Partial<State>> = (
   state: State,
@@ -19,17 +20,24 @@ export abstract class Ark<StateType extends StateBase> implements OnDestroy {
   protected readonly destroy$ = new Subject<void>();
   protected readonly stateSubject$ = new ReplaySubject<StateType>(1);
   protected readonly stateChangedSubject$ = new Subject<void>();
+  protected readonly _name = this.config?.name;
 
+  readonly id = uuidv4();
   readonly stateChanged$ = this.stateChangedSubject$.asObservable();
   readonly state$ = this.selectState(s => s);
   readonly loading$ = this.selectState(s => !!s.loading);
   readonly error$ = this.selectState(s => s.error);
 
+  get name(): string {
+    return this._name || '';
+  }
+
   constructor(
     @Optional() @Inject(INITIAL_STATE) protected readonly initialState: StateType,
-    @Optional() @Inject(ARK_CONFIG) private readonly config?: ArkConfig,
+    @Optional() @Inject(ARK_CONFIG) protected readonly config?: ArkConfig,
   ) {
     this.stateSubject$.next(this.state);
+    this.register();
   }
 
   update(updateObj: Partial<StateType>): void;
@@ -111,6 +119,7 @@ export abstract class Ark<StateType extends StateBase> implements OnDestroy {
     this.destroy$.next();
     this.stateSubject$.complete();
     this.stateChangedSubject$.complete();
+    window.__ARK_REGISTRY__?.unregister(this.id);
   }
 
   protected setState(state: StateType): void {
@@ -124,5 +133,13 @@ export abstract class Ark<StateType extends StateBase> implements OnDestroy {
       map<StateType, Result>(state => selectFunction(state)),
       distinctUntilChanged(),
     );
+  }
+
+  protected register(): void {
+    if (!window.__ARK_REGISTRY__ || typeof window.__ARK_REGISTRY__ !== 'object') {
+      window.__ARK_REGISTRY__ = new WindowRegistry();
+    }
+
+    window.__ARK_REGISTRY__.register(this);
   }
 }
